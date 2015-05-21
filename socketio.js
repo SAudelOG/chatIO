@@ -15,14 +15,15 @@ app.get('/chatroom', function(req, res){
 });
 
 io.on('connection', function(socket){
-	/*console.log('a user connected');
-	socket.on('disconnect', function(){
-		console.log('user disconnected');
-	});*/
-	socket.on('welcome chat', function(usr){
-		console.log('usuario: ' + usr);
-		io.emit('welcome chat', usr);
+	/*console.log('a user connected');*/
+	socket.on('disconnect', function(data){
+		console.log(socket.id);
 	});
+	socket.on('join', function(name){
+		console.log(name);
+		console.log(socket.id);
+	});
+
 	socket.on('chat message', function(msg){
 		try{
 			io.emit('chat message', msg);

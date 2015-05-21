@@ -34,7 +34,7 @@ form button{
 	padding: 5px 10px;
 }
 #messages li:nth-child(odd){
-	color: #eee;
+	color: #989898;
 }
 #usrs{
 	float: right;

@@ -3,13 +3,11 @@
 	'use sctric';
 
 	var socket = io('http://192.168.100.8:3000');
-
-	socket.emit('welcome chat', getQs('usr'));
-	socket.on('welcome chat', function(usr){
-		$('#messages').append($('<li>').text(usr + ' se unio al chat'));
-		$('#usrs').append($('<li>').text(usr));
+	var nickname = getQs('usr');
+	socket.on('connect', function(){
+		$('#messages').append($('<li>').text(nickname + ' se unio al chat'));
+		socket.emit('join', nickname)
 	});
-
 
 	$('form').submit(function(){
 		socket.emit('chat message', $('#m').val());
